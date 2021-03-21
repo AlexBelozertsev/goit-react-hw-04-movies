@@ -1,0 +1,17 @@
+@import 'styles/shared';
+
+.MoviesList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.list {
+  display: inline-block;
+  width: calc((100% / 2) - 10px);
+  margin: 5px;
+  padding: 5px 20px;
+  font-weight: 500;
+  color: $white;
+  background-color: $teal-shadow;
+  border: 1px solid $teal;
+}

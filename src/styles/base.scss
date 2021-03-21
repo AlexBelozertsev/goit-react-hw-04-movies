@@ -1,0 +1,125 @@
+@import 'styles/shared';
+
+body {
+  margin: 0;
+  background-color: $white;
+  color: $black;
+  line-height: 1.5;
+  font-family: $primary-font-stack;
+}
+
+img {
+  display: block;
+  width: 320px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 1px 2px 2px $teal-shadow;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  color: $black;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+p {
+  margin: 15px;
+  padding: 15px;
+}
+section {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid $teal;
+  box-shadow: 1px 2px 2px $teal-shadow;
+}
+.description {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.add_section {
+  background-color: $teal-back;
+  flex-direction: column;
+}
+.add_section div {
+  display: flex;
+  justify-content: center;
+}
+.Nav {
+  display: flex;
+  padding: 10px;
+  background-color: $teal-back;
+  border-bottom: 1px solid $teal;
+  box-shadow: 1px 2px 2px $teal-shadow;
+}
+.NavLink {
+  display: inline-flex;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 8px 12px;
+  margin: 5px;
+  background-color: $teal;
+  border-radius: 5px;
+  color: $white;
+}
+.NavLink:hover {
+  box-shadow: 1px 2px 2px $teal-shadow;
+}
+.NavLink_active {
+  background-color: $red;
+  box-shadow: 2px 3px 3px $teal-shadow;
+}
+.list {
+  display: inline-block;
+  width: calc((100% / 2) - 20px);
+  margin: 5px 10px;
+  padding: 5px 20px;
+  font-weight: 500;
+  color: $white;
+  background-color: $teal-back;
+  border: 1px solid $teal;
+  box-shadow: 2px 3px 3px $teal-shadow;
+}
+.button {
+  @extend %button;
+  margin: 15px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: $teal;
+  color: $white;
+  font-weight: 400;
+
+  &:hover,
+  &:focus {
+    background-color: $red;
+    box-shadow: 1px 4px 4px $teal-shadow;
+  }
+}
+.cast {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.cast li {
+  display: inline-flex;
+  justify-content: start;
+  width: calc((100% / 2) - 20px);
+  margin: 8px;
+  padding: 12px;
+}
+.cast_descript {
+  padding: 35px 20px;
+}
+.cast_character {
+  color: $teal;
+}

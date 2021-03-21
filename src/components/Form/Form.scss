@@ -1,0 +1,42 @@
+@import 'styles/shared';
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 500px;
+  padding: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.Form input {
+  font-size: 20px;
+  padding: 5px;
+  border: 1px solid $teal;
+  outline: none;
+  border-radius: 5px;
+}
+.Form input:focus,
+.Form input:hover {
+  box-shadow: 1px 2px 2px 1px $teal-shadow;
+}
+
+.Form_button {
+  border: none;
+  border-radius: 5px;
+  background-color: $teal;
+  color: $white;
+  font-weight: 500;
+  width: calc(100% / 4);
+  margin: 10px auto;
+  padding: 8px 10px;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 1px 2px 2px 0 $teal-shadow;
+}
+.Form_button:hover {
+  background-color: $red;
+  box-shadow: 1px 4px 4px $teal-shadow;
+}
