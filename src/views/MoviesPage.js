@@ -9,6 +9,8 @@ class MoviesPage extends Component {
     
     formSubmitHandler = data => {
         this.setState({ searchMovie: data.name });
+        // this.props.match.url.push(`?qery=${this.state.searchMovie}`)
+        // console.log(this.props.match.url);
     };
 
     render() {
