@@ -6,11 +6,20 @@ class MoviesPage extends Component {
     state = {
         searchMovie: '',
     }
-    
+
+    componentDidMount() {
+        const { search, pathname } = this.props.location;
+        if (pathname && search) {
+            this.setState({ searchMovie: search.slice(7) });
+        }
+    }
+
     formSubmitHandler = data => {
         this.setState({ searchMovie: data.name });
-        // this.props.match.url.push(`?qery=${this.state.searchMovie}`)
-        // console.log(this.props.match.url);
+        this.props.history.push({
+            ...this.props.location,
+            search: `?query=${data.name}`,
+        });
     };
 
     render() {

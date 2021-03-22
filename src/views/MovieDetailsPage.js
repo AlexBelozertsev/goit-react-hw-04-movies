@@ -57,7 +57,7 @@ class MovieDetailsPage extends Component {
                     <Link to={{
                         pathname: `${url}/cast`,
                         state: {
-                            from: this.props.location,
+                             ...this.props.location.state
                         }
                     }}>
                         <button type='button' className='button'>Cast</button>
@@ -65,7 +65,7 @@ class MovieDetailsPage extends Component {
                     <Link to={{
                         pathname: `${url}/reviews`,
                         state: {
-                            from: this.props.location,
+                            ...this.props.location.state
                         }
                     }}>
                         {<button type='button' className='button'>Reviews</button>}
@@ -78,7 +78,7 @@ class MovieDetailsPage extends Component {
                 <Route path={`${path}/reviews`} component={Reviews} />
                 </Switch>
             </Suspense>
-</>);
+        </>);
     }
 }
  
