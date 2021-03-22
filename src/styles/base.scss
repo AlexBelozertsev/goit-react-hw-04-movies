@@ -111,12 +111,14 @@ section {
   flex-wrap: wrap;
 }
 .cast li {
-  justify-content: start;
+  display: flex;
+  justify-content: center;
   width: calc((100% / 2) - 20px);
   margin: 8px;
   padding: 12px;
 }
 .cast_descript {
+  display: inline-block;
   padding: 35px 20px;
 }
 .cast_character {

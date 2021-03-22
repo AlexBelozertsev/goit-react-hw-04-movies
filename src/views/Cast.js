@@ -20,7 +20,7 @@ class Cast extends Component {
                 {cast.map(person => {
                     const castImg = `https://image.tmdb.org/t/p/w500${person.profile_path}`;
                     return <li key={person.id}>
-                        <img src={castImg} alt={person.name} />
+                        {person.profile_path && <img src={castImg} alt={person.name} />}
                         <div className='cast_descript'>
                             <h3>{person.name}</h3>
                             <h4 className='cast_character' >{person.character}</h4>
