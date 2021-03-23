@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from '../components/Form';
 import MoviesList from '../components/MoviesList';
+import queryString from 'query-string';
 
 class MoviesPage extends Component {
     state = {
@@ -9,8 +10,9 @@ class MoviesPage extends Component {
 
     componentDidMount() {
         const { search, pathname } = this.props.location;
+        const searchParams = queryString.parse(search);
         if (pathname && search) {
-            this.setState({ searchMovie: search.slice(7) });
+            this.setState({ searchMovie: searchParams.query });
         }
     }
 
@@ -24,13 +26,13 @@ class MoviesPage extends Component {
 
     render() {
         const { searchMovie } = this.state;
-        return ( 
+        return (
             <>
                 <Form onSubmit={this.formSubmitHandler} />
                 {searchMovie && <MoviesList searchMovie={searchMovie} />}
             </>
-         );
+        );
     }
 };
- 
+
 export default MoviesPage;
