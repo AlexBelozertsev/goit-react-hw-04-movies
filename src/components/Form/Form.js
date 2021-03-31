@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './Form.scss';
 import PropTypes from 'prop-types';
+import './Form.scss';
+import Button from '../Button';
 
 class Form extends Component {
   state = {
@@ -32,11 +33,8 @@ class Form extends Component {
               value={this.state.name}
               id={this.nameInputId}
               onChange={this.handleChange}
-            />
-
-          <button type="submit" className='Form_button'>
-            Search
-          </button>
+          />
+          <Button type={'submit'} text={'Search'} />
         </form>
       </>
     );

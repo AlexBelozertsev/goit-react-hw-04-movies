@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import movieApi from '../services/movieApi';
-import routes from '../routes';
+import MoviesList from '../components/MoviesList';
 
 class HomeView extends Component {
     state = {
@@ -15,23 +14,12 @@ class HomeView extends Component {
 
     render() {
         const { movies } = this.state;
+        const {location} = this.props
         return (
-        <>
-            <h1>Trending Today</h1>
-            <ul>
-                {movies.map(movie =>
-                    <li key={movie.id} className='list'>
-                        <Link to={{
-                            pathname: `${routes.moviesPage}/${movie.id}`,
-                            state: {
-                                from: this.props.location,
-                            }
-                        }}>
-                            {movie.title}
-                        </Link>
-                </li> )}
-            </ul>
-        </>
+            <>
+                <h1>Trending Today</h1>
+                <MoviesList movies={movies} location={location} />
+            </>
         );
     }
 };

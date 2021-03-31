@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import queryString from 'query-string';
 import Form from '../components/Form';
 import MoviesList from '../components/MoviesList';
-import queryString from 'query-string';
+import movieApi from '../services/movieApi';
 
 class MoviesPage extends Component {
     state = {
         searchMovie: '',
+        movies: [],
     }
 
     componentDidMount() {
@@ -14,7 +16,14 @@ class MoviesPage extends Component {
         if (pathname && search) {
             this.setState({ searchMovie: searchParams.query });
         }
-    }
+    };
+
+    async componentDidUpdate(prevProps, prevState) {
+        if (prevState.searchMovie !== this.state.searchMovie) {
+            const responce = await movieApi.fetchMovie(this.state.searchMovie);
+            this.setState({ movies: responce.results });
+        };
+    };
 
     formSubmitHandler = data => {
         this.setState({ searchMovie: data.name });
@@ -25,11 +34,11 @@ class MoviesPage extends Component {
     };
 
     render() {
-        const { searchMovie } = this.state;
+        const { searchMovie, movies } = this.state;
         return (
             <>
                 <Form onSubmit={this.formSubmitHandler} />
-                {searchMovie && <MoviesList searchMovie={searchMovie} />}
+                {searchMovie && <MoviesList movies={movies} />}
             </>
         );
     }

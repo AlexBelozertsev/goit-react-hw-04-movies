@@ -1,0 +1,23 @@
+@import 'styles/shared';
+
+.button {
+  @extend %button;
+  display: inline-block;
+  width: auto;
+  margin: 15px;
+  border-radius: 5px;
+  padding: 8px 10px;
+  background-color: $teal;
+  color: $white;
+  font-weight: 500;
+  box-shadow: 1px 2px 2px 0 $teal-shadow;
+
+  &:hover,
+  &:focus {
+    background-color: $red;
+    box-shadow: 1px 4px 4px $teal-shadow;
+  }
+  .form {
+    width: calc(100% / 4);
+  }
+}

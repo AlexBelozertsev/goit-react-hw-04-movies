@@ -2,6 +2,7 @@ import React, { Component, Suspense, lazy } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import '../styles/base.scss';
 import movieApi from '../services/movieApi';
+import Button from '../components/Button';
 import routes from '../routes';
 
 const Cast = lazy(() => import('./Cast' /* webpackChunkName: "casts-page" */));
@@ -18,10 +19,18 @@ class MovieDetailsPage extends Component {
     }
 
     async componentDidMount() {
-        const movieId = this.props.match.params.movieId;
-        const responceMovie = await movieApi.fetchMovieById(movieId);
-        const { title, overview, genres, poster_path, release_date, vote_average } = responceMovie;
-        this.setState({ title, overview, genres, poster_path, release_date, vote_average });
+        const type = this.props.location.hash.slice(1);
+        const { movieId } = this.props.match.params;
+        const queryResponse = query => movieApi.fetchMovieById(`${query}`, movieId);
+        if (type === 'movie') {
+            const responceMovie = await queryResponse('movie');
+            const { title, overview, genres, poster_path, release_date, vote_average } = responceMovie;
+            this.setState({ title, overview, genres, poster_path, release_date, vote_average });
+        } else {
+            const responceTV = await queryResponse('tv');
+                const { name, overview, genres, poster_path, first_air_date, vote_average } = responceTV;
+                this.setState({ title: name, overview, genres, poster_path, release_date: first_air_date, vote_average });
+        }
     }
 
     handleGoBack = () => {
@@ -37,7 +46,7 @@ class MovieDetailsPage extends Component {
         const url = this.props.match.url;
         const path = this.props.match.path;
         return (<>
-            <button type='button' className='button' onClick={this.handleGoBack}>Go Back</button>
+            <Button type={'button'} text={'Go Back'} onClick={this.handleGoBack} />
             <section>
                 <div>
                     {poster_path && <img src={imgUrl} alt={title}/>}
@@ -56,19 +65,21 @@ class MovieDetailsPage extends Component {
                 <div>
                     <Link to={{
                         pathname: `${url}/cast`,
+                        hash: `${this.props.location.hash.slice(1)}`,
                         state: {
                              ...this.props.location.state
                         }
                     }}>
-                        <button type='button' className='button'>Cast</button>
+                        <Button type={'button'} text={'Cast'} />
                     </Link>
                     <Link to={{
                         pathname: `${url}/reviews`,
+                        hash: `${this.props.location.hash.slice(1)}`,
                         state: {
                             ...this.props.location.state
                         }
                     }}>
-                        {<button type='button' className='button'>Reviews</button>}
+                        <Button type={'button'} text={'Reviews'} />
                     </Link>
                 </div>
             </section>

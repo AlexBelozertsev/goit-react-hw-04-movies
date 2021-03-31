@@ -10,9 +10,7 @@ body {
 
 img {
   display: block;
-  width: 320px;
-  height: auto;
-  border-radius: 5px;
+  border-radius: 3px;
   box-shadow: 1px 2px 2px $teal-shadow;
 }
 
@@ -30,6 +28,9 @@ a {
   color: $black;
 }
 ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   list-style: none;
   padding: 0;
 }
@@ -81,43 +82,33 @@ section {
 }
 .list {
   display: inline-block;
-  width: calc((100% / 2) - 20px);
-  margin: 5px 10px;
-  padding: 5px 20px;
+  margin: 10px;
+  text-align: center;
+  font-size: 20px;
   font-weight: 500;
+  line-height: 2.5;
   color: $white;
   background-color: $teal-back;
-  border: 1px solid $teal;
-  box-shadow: 2px 3px 3px $teal-shadow;
-}
-.button {
-  @extend %button;
-  margin: 15px;
   border-radius: 5px;
-  padding: 5px 10px;
-  background-color: $teal;
-  color: $white;
-  font-weight: 400;
+  border: 1px solid $teal;
+  box-shadow: 3px 4px 4px $teal-shadow;
+  transition-duration: 250ms;
+}
+.list:hover {
+  transform: scale(1.03);
+}
+.list img {
+  width: 500px;
+  height: 281px;
+  object-fit: cover;
+  object-position: top;
+}
 
-  &:hover,
-  &:focus {
-    background-color: $red;
-    box-shadow: 1px 4px 4px $teal-shadow;
-  }
-}
-.cast {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.cast li {
-  display: flex;
-  justify-content: center;
-  width: calc((100% / 2) - 20px);
-  margin: 8px;
-  padding: 12px;
+.list .cast_img {
+  height: auto;
 }
 .cast_descript {
+  color: $black;
   display: inline-block;
   padding: 35px 20px;
 }

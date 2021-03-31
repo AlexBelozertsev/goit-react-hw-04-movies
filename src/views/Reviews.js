@@ -7,9 +7,16 @@ class Review extends Component {
     };
 
     async componentDidMount() {
+        const type = this.props.location.hash.slice(1);
         const movieId = this.props.match.params.movieId;
-        const responceReview = await movieApi.fetchReview(movieId);
-        this.setState({ reviews: responceReview });
+        const queryResponse = query => movieApi.fetchReview(`${query}`, movieId);
+        if (type === 'movie') {
+            const responceMovieReview = await queryResponse('movie');
+            this.setState({ reviews: responceMovieReview });
+        } else {
+                const responceTVReview = await queryResponse('tv');
+                this.setState({ reviews: responceTVReview })
+        }
     }
 
     render() { 
